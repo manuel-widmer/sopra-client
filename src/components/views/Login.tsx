@@ -63,7 +63,7 @@ const Login = () => {
       <div className="login container">
         <div className="login form">
           <FormField
-            label="Username"
+            label="username"
             value={username}
             onChange={(un: string) => setUsername(un)}
           />

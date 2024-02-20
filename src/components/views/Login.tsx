@@ -68,7 +68,7 @@ const Login = () => {
             onChange={(un: string) => setUsername(un)}
           />
           <FormField
-            label="Name"
+            label="password"
             value={name}
             onChange={(n) => setName(n)}
           />

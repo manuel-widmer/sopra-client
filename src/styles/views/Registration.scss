@@ -1,8 +1,8 @@
 @import "../theme";
 
-// defines style of the login class and its child classes (container, form, etc.)
+// defines style of the registration class and its child classes (container, form, etc.)
 
-.login {
+.registration {
 
   // defines style of basic container
   &.container {
@@ -13,7 +13,7 @@
     flex-direction: column;
   }
 
-  // defines style of black login box
+  // defines style of black registration box
   &.form {
     display: flex;
     flex-direction: column;

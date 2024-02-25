@@ -4,6 +4,9 @@ import {GameGuard} from "../routeProtectors/GameGuard";
 import GameRouter from "./GameRouter";
 import {LoginGuard} from "../routeProtectors/LoginGuard";
 import Login from "../../views/Login";
+import Registration from "../../views/Registration";
+import EntryPage from "../../views/EntryPage";
+import UserProfile from "../../views/UserProfile"; // ADDED
 
 /**
  * Main router of your application.
@@ -14,10 +17,12 @@ import Login from "../../views/Login";
  * /game renders a Router that contains other sub-routes that render in turn other react components
  * Documentation about routing in React: https://reactrouter.com/en/main/start/tutorial 
  */
+
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<EntryPage />} />
 
         <Route path="/game/*" element={<GameGuard />}>
           <Route path="/game/*" element={<GameRouter base="/game"/>} />
@@ -25,6 +30,14 @@ const AppRouter = () => {
 
         <Route path="/login" element={<LoginGuard />}>
           <Route path="/login" element={<Login/>} />
+        </Route>
+
+        <Route path="/registration" element={<Registration />}>
+          <Route path="/registration" element={<Registration/>} />
+        </Route>
+
+        <Route path="/game/:username" element={<GameGuard />}>          {/* ADDED */}
+          <Route path="/game/:username" element={<UserProfile />} />    {/* ADDED */} 
         </Route>
 
         <Route path="/" element={

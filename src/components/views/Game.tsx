@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { api, handleError } from "helpers/api";
 import { Spinner } from "components/ui/Spinner";
 import { Button } from "components/ui/Button";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import BaseContainer from "components/ui/BaseContainer";
 import PropTypes from "prop-types";
 import "styles/views/Game.scss";
 import { User } from "types";
 
+
 const Player = ({ user }: { user: User }) => (
   <div className="player container">
-    <div className="player username">{user.username}</div>
+    <Link to={`/game/${user.username}`}>                      {/* ADDED & CHANGED */}
+      <div className="player username">{user.username}</div>
+    </Link>                                                   {/* ADDED */}
     <div className="player name">{user.name}</div>
     <div className="player id">id: {user.id}</div>
   </div>
@@ -85,11 +88,17 @@ const Game = () => {
     content = (
       <div className="game">
         <ul className="game user-list">
-          {users.map((user: User) => (
+          {users.map((user: User) => (                  
             <li key={user.id}>
-              <Player user={user} />
+              {localStorage.getItem("token") &&           // ADDED
+                (                                         // ADDED
+                  <Link to={`/game/${user.username}`}>    {/* ADDED & CHANGED */}
+                  <Player user={user} />
+                  </Link>                                 // ADDED
+                )                                         // ADDED
+              }
             </li>
-          ))}
+  ))}
         </ul>
         <Button width="100%" onClick={() => logout()}>
           Logout
@@ -100,9 +109,9 @@ const Game = () => {
 
   return (
     <BaseContainer className="game container">
-      <h2>Happy Coding!</h2>
+      <h2>List of users</h2>
       <p className="game paragraph">
-        Get all users from secure endpoint:
+        The following users have registered:
       </p>
       {content}
     </BaseContainer>

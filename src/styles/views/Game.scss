@@ -8,6 +8,7 @@
  */
 
 .game {
+  // defines style of login container
   &.container {
     background: $background;
     padding: 1.5em;
@@ -17,22 +18,26 @@
     align-items: center;
     box-shadow: $dropShadow;
   }
+  // defines style of user list
   &.user-list {
-    list-style: none;
+    list-style: none; // makes bullet list without bullets
     padding-left: 0;
   }
+  // CHECK: WHAT DOES THIS DO?
   &.user-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
+  // defines intervals between elements
   & p,h2 {
     margin: 0.5em 0;
   }
 }
 
 .player {
+  // defines style of player container
   &.container {
     margin: 0.5em 0;
     width: 20em;
@@ -42,14 +47,19 @@
     align-items: center;
     background: lighten($background, 5);
   }
+  // CHECK: THIS SHOULD BE PASSWORD!
+  // defines font of name
   &.name {
+  // defines style of player container
     font-weight: 300;
     margin-left: 5px;
   }
+  // defines font of username
   &.username {
     font-weight: 500;
     color: $accent;
   }
+  // defines font and position of ID
   &.id {
     margin-left: auto;
     margin-right: 10px;

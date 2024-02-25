@@ -1,10 +1,12 @@
 @import "../theme";
 
 .header {
+  // includes logo
   &.container {
     @include center;
   }
 
+  // defines style of title
   &.title {
     font-weight: bold;
     color: $background;

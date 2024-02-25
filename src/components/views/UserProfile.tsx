@@ -14,7 +14,7 @@ const UserProfile = () => {
   useEffect(() => {
     async function fetchUserProfile() {
       try {
-        const response = await api.get(`/user/${username}`);
+        const response = await api.get(`/users/${username}`);
         setUser(response.data);
       } catch (error) {
         console.error(
@@ -29,7 +29,7 @@ const UserProfile = () => {
   const handleSetBirthDate = async () => {
     try {
       // Send a request to the server to update the user's profile with the newBirthDate
-      const response = await api.put(`/user/${username}`, {
+      const response = await api.put(`/users/${username}`, {
         birthDate: newBirthDate,
       });
 

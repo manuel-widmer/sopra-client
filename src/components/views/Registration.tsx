@@ -40,6 +40,7 @@ const Registration = () => {
       const user = new User(response.data);
 
       localStorage.setItem("token", user.token);
+      localStorage.setItem("userId", user.id);
 
       // Registration successful, navigate to the desired route.
       navigate("/game");

@@ -11,7 +11,7 @@ const EntryPage = () => {
       <Header height="100px" /> 
       <div className="login field">
         <div className="login container">
-        Please login as an existing user or register as a new user.
+      Please login as an existing user or register as a new user.
         </div>
       </div>
       <div className="login container">

@@ -92,7 +92,7 @@ const Game = () => {
             <li key={user.id}>
               {localStorage.getItem("token") &&           // ADDED
                 (                                         // ADDED
-                  <Link to={`/game/${user.username}`}>    {/* ADDED & CHANGED */}
+                  <Link to={`/game/${user.id}`}>    {/* ADDED & CHANGED */}
                   <Player user={user} />
                   </Link>                                 // ADDED
                 )                                         // ADDED

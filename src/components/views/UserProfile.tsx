@@ -7,14 +7,14 @@ import { User } from "types";
 import { Button } from "components/ui/Button";
 
 const UserProfile = () => {
-  const { username } = useParams();
+  const { id } = useParams();
   const [user, setUser] = useState<User>(null);
   const [newBirthDate, setNewBirthDate] = useState<string>("");
 
   useEffect(() => {
     async function fetchUserProfile() {
       try {
-        const response = await api.get(`/users/${username}`);
+        const response = await api.get(`/users/${id}`);
         setUser(response.data);
       } catch (error) {
         console.error(
@@ -24,12 +24,12 @@ const UserProfile = () => {
     }
 
     fetchUserProfile();
-  }, [username]);
+  }, [id]);
 
   const handleSetBirthDate = async () => {
     try {
       // Send a request to the server to update the user's profile with the newBirthDate
-      const response = await api.put(`/users/${username}`, {
+      const response = await api.put(`/users/${id}`, {
         birthDate: newBirthDate,
       });
 
@@ -42,6 +42,8 @@ const UserProfile = () => {
 
   return (
     <BaseContainer className="user-profile container">
+      <div className="login container">
+      <div className="login form">
       <h2>User Profile</h2>
       {user && (
         <div className="user-profile-details">
@@ -71,8 +73,11 @@ const UserProfile = () => {
           <Link to="/game">
             <Button>Return to user overview</Button>
           </Link>
-        </div>
+        </div>       
       )}
+      </div>
+      </div>
+
     </BaseContainer>
   );
 };

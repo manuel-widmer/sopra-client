@@ -35,7 +35,7 @@ const Registration = () => {
   const doRegistration = async () => {
     try {
       const requestBody = JSON.stringify({ username, name });
-      const response = await api.post("/users", requestBody);
+      const response = await api.post("/users/registration", requestBody);
 
       const user = new User(response.data);
 

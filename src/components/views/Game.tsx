@@ -11,7 +11,7 @@ import { User } from "types";
 
 const Player = ({ user }: { user: User }) => (
   <div className="player container">
-    <Link to={`/game/${user.username}`}>                      {/* ADDED & CHANGED */}
+    <Link to={`/game/${user.id}`}>                      {/* ADDED & CHANGED */}
       <div className="player username">{user.username}</div>
     </Link>                                                   {/* ADDED */}
     <div className="player name">{user.name}</div>

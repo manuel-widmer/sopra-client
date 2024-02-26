@@ -80,8 +80,8 @@ const Login = () => {
               Login
             </Button>
             <Button
-            width="100%" // controls size of register button
-            onClick={goToRegistration}
+              width="100%" // controls size of register button
+              onClick={goToRegistration}
             >
             Go to Registration
             </Button>

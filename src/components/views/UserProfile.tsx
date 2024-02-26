@@ -43,39 +43,39 @@ const UserProfile = () => {
   return (
     <BaseContainer className="user-profile container">
       <div className="login container">
-      <div className="login form">
-      <h2>User Profile</h2>
-      {user && (
-        <div className="user-profile-details">
-          <div>Username: {user.username}</div>
-          <div>Online Status: {user.status}</div>
-          <div>Creation Date: {user.creationDate}</div>
-          <div>
+        <div className="login form">
+          <h2>User Profile</h2>
+          {user && (
+            <div className="user-profile-details">
+              <div>Username: {user.username}</div>
+              <div>Online Status: {user.status}</div>
+              <div>Creation Date: {user.creationDate}</div>
+              <div>
             Birth Date:{" "}
-            {user.birthDate ? (
-              user.birthDate
-            ) : (
-              <>
-                Not set
-                {/* Render input field and button if Birth Date is not set */}
-                <br />
-                <br />
-                <input
-                  type="date"
-                  value={newBirthDate}
-                  onChange={(e) => setNewBirthDate(e.target.value)}
-                />
-                <Button onClick={handleSetBirthDate}>Set Birth Date</Button>
-              </>
-            )}
-          </div>
-          <br />
-          <Link to="/game">
-            <Button>Return to user overview</Button>
-          </Link>
-        </div>       
-      )}
-      </div>
+                {user.birthDate ? (
+                  user.birthDate
+                ) : (
+                  <>
+                  Not set
+                    {/* Render input field and button if Birth Date is not set */}
+                    <br />
+                    <br />
+                    <input
+                      type="date"
+                      value={newBirthDate}
+                      onChange={(e) => setNewBirthDate(e.target.value)}
+                    />
+                    <Button onClick={handleSetBirthDate}>Set Birth Date</Button>
+                  </>
+                )}
+              </div>
+              <br />
+              <Link to="/game">
+                <Button>Return to user overview</Button>
+              </Link>
+            </div>       
+          )}
+        </div>
       </div>
 
     </BaseContainer>

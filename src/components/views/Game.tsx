@@ -93,12 +93,12 @@ const Game = () => {
               {localStorage.getItem("token") &&           // ADDED
                 (                                         // ADDED
                   <Link to={`/game/${user.id}`}>    {/* ADDED & CHANGED */}
-                  <Player user={user} />
+                    <Player user={user} />
                   </Link>                                 // ADDED
                 )                                         // ADDED
               }
             </li>
-  ))}
+          ))}
         </ul>
         <Button width="100%" onClick={() => logout()}>
           Logout

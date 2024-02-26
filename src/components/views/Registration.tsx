@@ -77,8 +77,8 @@ const Registration = () => {
               Register
             </Button>
             <Button
-            width="100%" // controls size of register button
-            onClick={goToLogin}
+              width="100%" // controls size of register button
+              onClick={goToLogin}
             >
             Go to Login
             </Button>

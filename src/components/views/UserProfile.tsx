@@ -29,16 +29,21 @@ const UserProfile = () => {
     fetchUserProfile();
   }, [id]);
 
-  const handleSaveChanges = async () => {
+  const handleSaveChanges = () => {
     try {
+      // Update the local state with the newUsername and newBirthDate
+      setUser((prevUser) => ({
+        ...prevUser,
+        username: newUsername || prevUser.username,
+        birthDate: newBirthDate || prevUser.birthDate,
+      }));
+
       // Send a request to the server to update the user's profile with the newUsername and newBirthDate
-      const response = await api.put(`/users/${id}`, {
-        username: newUsername || user.username, // Use existing username if newUsername is empty
-        birthDate: newBirthDate || user.birthDate, // Use existing birthDate if newBirthDate is empty
+      api.put(`/users/${id}`, {
+        username: newUsername || user.username,
+        birthDate: newBirthDate || user.birthDate,
       });
 
-      // Update the local state with the updated user data
-      setUser(response.data);
       setIsEditing(false); // Exit editing mode after saving changes
     } catch (error) {
       console.error(`Error saving changes: \n${handleError(error)}`);

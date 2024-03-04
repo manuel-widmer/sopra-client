@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 import "styles/views/Game.scss";
 import { User } from "types";
 
-
 const Player = ({ user }: { user: User }) => (
   <div className="player container">
     <Link to={`/game/${user.id}`}>                      {/* ADDED & CHANGED */}
@@ -34,9 +33,25 @@ const Game = () => {
   // more information can be found under https://react.dev/learn/state-a-components-memory and https://react.dev/reference/react/useState 
   const [users, setUsers] = useState<User[]>(null);
 
-  const logout = (): void => {
-    localStorage.removeItem("token");
-    navigate("/login");
+  const logout = async (): Promise<void> => {
+    try {
+      // Assuming you have the userId stored in your component state
+      const userId = localStorage.getItem("userId");
+
+      const response = await api.post("/users/logout", {
+        id: userId,
+      });
+
+      // Handle successful logout
+      localStorage.removeItem("token");
+      navigate("/login");
+    } catch (error) {
+      console.error(
+        `Something went wrong during logout: \n${handleError(error)}`
+      );
+      console.error("Details:", error);
+      alert("Logout failed! See the console for details.");
+    }
   };
 
   // the effect hook can be used to react to change in your component.

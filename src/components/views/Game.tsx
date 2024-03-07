@@ -10,9 +10,9 @@ import { User } from "types";
 
 const Player = ({ user }: { user: User }) => (
   <div className="player container">
-    <Link to={`/game/${user.id}`}>                      {/* ADDED & CHANGED */}
+    <Link to={`/game/${user.id}`}>                      
       <div className="player username">{user.username}</div>
-    </Link>                                                   {/* ADDED */}
+    </Link>                                                   
     <div className="player name">{user.name}</div>
     <div className="player id">id: {user.id}</div>
   </div>
@@ -40,10 +40,12 @@ const Game = () => {
 
       if (!userId) {
       // Redirects to login page if userId is not available -> ensures that logout button still functions if user entry is deleted from backend db after login
-      navigate("/login");
-      return;
+        navigate("/login");
+        
+        return;
       }
   
+      // 
       const response = await api.post("/users/logout", {
         id: userId,
       });
@@ -111,12 +113,12 @@ const Game = () => {
         <ul className="game user-list">
           {users.map((user: User) => (                  
             <li key={user.id}>
-              {localStorage.getItem("token") &&           // ADDED
-                (                                         // ADDED
-                  <Link to={`/game/${user.id}`}>    {/* ADDED & CHANGED */}
+              {localStorage.getItem("token") &&           
+                (                                         
+                  <Link to={`/game/${user.id}`}>    
                     <Player user={user} />
-                  </Link>                                 // ADDED
-                )                                         // ADDED
+                  </Link>                                 
+                )                                         
               }
             </li>
           ))}

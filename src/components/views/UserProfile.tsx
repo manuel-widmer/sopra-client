@@ -97,11 +97,11 @@ const UserProfile = () => {
               )}
               <br />
               <br />
-              <Link to="/game">
-                <Button>Return to user overview</Button>
-              </Link>
             </div>
           )}
+          <Link to="/game">
+            <Button>Return to user overview</Button>
+          </Link>
         </div>
       </div>
     </BaseContainer>

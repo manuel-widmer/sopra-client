@@ -35,9 +35,15 @@ const Game = () => {
 
   const logout = async (): Promise<void> => {
     try {
-      // Assuming you have the userId stored in your component state
+      // Gets userId from local storage
       const userId = localStorage.getItem("userId");
 
+      if (!userId) {
+      // Redirects to login page if userId is not available -> ensures that logout button still functions if user entry is deleted from backend db after login
+      navigate("/login");
+      return;
+      }
+  
       const response = await api.post("/users/logout", {
         id: userId,
       });

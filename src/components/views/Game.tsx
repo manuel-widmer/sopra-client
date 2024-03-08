@@ -42,6 +42,7 @@ const Game = () => {
       if (!userId) {
         // If userId is not available, navigate to the login page
         navigate("/login");
+        
         return;
       }
   

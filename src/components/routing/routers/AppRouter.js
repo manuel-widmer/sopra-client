@@ -36,8 +36,8 @@ const AppRouter = () => {
           <Route path="/registration" element={<Registration/>} />
         </Route>
 
-        <Route path="/game/:id" element={<GameGuard />}>          {/* ADDED */}
-          <Route path="/game/:id" element={<UserProfile />} />    {/* ADDED */} 
+        <Route path="/game/:id" element={<GameGuard />}>          {/* ADDED TO PROTECT ACCESS TO USER PROFILES */}
+          <Route path="/game/:id" element={<UserProfile />} />    {/* ADDED TO PROTECT ACCESS TO USER PROFILES */} 
         </Route>
 
         <Route path="/" element={

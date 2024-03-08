@@ -52,6 +52,7 @@ const Game = () => {
 
       // Handle successful logout
       localStorage.removeItem("token");
+      localStorage.removeItem("userId");
       navigate("/login");
     } catch (error) {
       console.error(

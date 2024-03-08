@@ -37,32 +37,41 @@ const Game = () => {
     try {
       // Gets userId from local storage
       const userId = localStorage.getItem("userId");
-
+  
+      // Check if userId exists
       if (!userId) {
-      // Redirects to login page if userId is not available -> ensures that logout button still functions if user entry is deleted from backend db after login
+        // If userId is not available, navigate to the login page
         navigate("/login");
-        
         return;
       }
   
-      // 
-      const response = await api.post("/users/logout", {
+      // Proceed with the logout request if userId is available
+      await api.post("/users/logout", {
         id: userId,
       });
-
+  
       // Handle successful logout
       localStorage.removeItem("token");
       localStorage.removeItem("userId");
       navigate("/login");
     } catch (error) {
-      console.error(
-        `Something went wrong during logout: \n${handleError(error)}`
-      );
-      console.error("Details:", error);
-      alert("Logout failed! See the console for details.");
+      console.error("Logout failed:", error);
+  
+      // Check if the error is a 404 Not Found
+      if (error.response && error.response.status === 404) {
+        console.warn("User not found on the server. Proceeding with local logout.");
+  
+        // Handle successful logout locally
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        navigate("/login");
+      } else {
+        // Handle other errors
+        alert("Logout failed! See the console for details.");
+      }
     }
   };
-
+  
   // the effect hook can be used to react to change in your component.
   // in this case, the effect hook is only run once, the first time the component is mounted
   // this can be achieved by leaving the second argument an empty array.
